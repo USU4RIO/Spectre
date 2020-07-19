@@ -34,7 +34,6 @@ struct arp_hdr{
 	char fill[18];								// O pacote ARP é menor que 64 bytes, aqui preenche para 64
 };
 
-// Estruturas
 struct hostent *host; // Resoluçao de dns
 struct sockaddr_in target , dst_addr , src_addr; // Origem,destino e alvo
 struct timeval timeout; // Timeout do socket
@@ -47,7 +46,6 @@ struct sockaddr destino; // Destino do pacote
 struct arp_hdr *pacote_arp; // Pacote ARP
 struct ethhdr *ethernet_hdr; // Cabeçalho ethernet
 
-// Funções
 char *get_ip(char *host_name);
 void dns_enum(char *domain , char *wordlist);
 int port_scan(char *ip , int port);
@@ -58,7 +56,6 @@ char *get_local_addr(char *device);
 char *network(char *net);
 void help(char *progname);
 
-// Função principal
 int main(int argc , char *argv[])
 {
     // Verifica a entreada do usuario
@@ -75,7 +72,7 @@ int main(int argc , char *argv[])
 
     int status;
 
-    // Processa os argumentos
+    // Processando os argumentos
     if(argc == 2 && strlen(argv[1]) > 8)
     {
         printf("> Scanning: %s\n\n",get_ip(argv[1]));
@@ -198,7 +195,7 @@ void dns_enum(char *domain , char *wordlist)
         return;
     }
 
-    // Faz bruteforce
+    // bruteforce
     while(fscanf(wdList , "%s" , subdomain) != EOF)
     {
         snprintf(host_complete , sizeof(host_complete) , "%s%s" , subdomain , domain);
@@ -469,7 +466,7 @@ char *network(char *net)
 // Função de ajuda
 void help(char *progname)
 {
-    puts("\t\t# Spectre - By: Zer0 #\n");
+    puts("\t\t# Spectre - By: Usuario #\n");
     printf("> Use: %s [OPÇÕES].\n",progname);
     puts("> Opções: -p [Especificar uma ou mais portas] -ap [Escanear todas as portas (65535)]");
     puts("> -r [Retorna o IP de um dominio] -e [Faz a um bruteforce em um dominio]");
