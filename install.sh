@@ -31,17 +31,17 @@ else
 fi
 
 echo "> Verificando spectre..."
-if [ -f bin/Debug/spectre ]
+if [ -f bin/spectre ]
 then
 	echo "> [OK]: spectre"
 else
 	echo "> [ERRO]: Erro ao encontrar o binario"
 	echo "> Tentando compilar..."
-	if [ -d bin/Debug ]
+	if [ -d bin/ ]
 	then
 		if [ -f src/main.c ]
 		then
-		       if  gcc -w src/main.c -o bin/Debug/spectre >> /dev/null
+		       if  gcc -w src/main.c -o bin/spectre >> /dev/null
                        then
                                 echo "> [OK] Compilado."
                         else
@@ -55,10 +55,10 @@ else
 		fi
 
 	else
-		mkdir bin/Debug
+		mkdir bin/
 		if [ -f src/main.c ]
                 then
-                       if  gcc -w src/main.c -o bin/Debug/spectre  >> /dev/null
+                       if  gcc -w src/main.c -o bin/spectre  >> /dev/null
 		       then
 				echo "> [OK] Compilado."
 			else
@@ -75,7 +75,7 @@ fi
 
 # Instalação do software
 echo "> Instalando..."
-if cp bin/Debug/spectre /usr/bin
+if cp bin/spectre /usr/bin
 then
 	echo "> [OK]: Instalado."
 	mkdir /usr/share/Spectre > /dev/null
